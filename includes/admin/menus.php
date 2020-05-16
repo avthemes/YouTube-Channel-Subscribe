@@ -7,40 +7,32 @@
  */
 function AV_YT_admin_menus() {
 
-	$av_plugins = av_get_plugins();
+	$av_plugins 		= av_get_plugins();
+	$parent_menu_slug	= 'options-general.php';
 
 	if ( count($av_plugins) > 1 && empty ( $GLOBALS['admin_page_hooks']['AV_themes_plugin_options'] ) ) {
 		
 		add_menu_page( 
-			__( 'AV Themes & Plugins Options', 'av-youtube' ), // page title
-			__( 'AV Settings', 'av-youtube' ), // menu title
+			__( 'AV Themes & Plugins Options', 'av-subscribe' ), // page title
+			__( 'AV Settings', 'av-subscribe' ), // menu title
 			'edit_theme_options', // user capability
 			'AV_themes_plugin_options',	// menu slug
 			'AV_Plugins_plugin_options_page', // menu callback function
 			AV_YT_Options_Menu_Icon() // parent menu icon
 		);
 
-		add_submenu_page(
-			'AV_themes_plugin_options', // parent slug
-			__( 'AV YouTube Channel Subscribe Options', 'av-youtube' ), // page title
-			__( 'YouTube Subscribe', 'av-youtube' ), // menu title
-			'edit_theme_options', // user capability
-			AV_YT_PLUGIN_SETTING_PAGE,	// menu slug
-			'AV_YT_plugin_options_page', // menu callback function
-			100 // position
-		);
+		$parent_menu_slug	= 'AV_themes_plugin_options';
 	}
-	else {
-		
-		add_menu_page(
-			__( 'AV YouTube Channel Subscribe Options', 'av-youtube' ), // page title
-			__( 'YT Subscribe', 'av-youtube' ), // menu title
-			'edit_theme_options', // user capability
-			AV_YT_PLUGIN_SETTING_PAGE,	// menu slug
-			'AV_YT_plugin_options_page', // menu callback function
-			AV_YT_Options_Menu_Icon() // parent menu icon
-		);
-	}
+	
+	add_submenu_page(
+		$parent_menu_slug, // parent slug
+		__( 'AV Channel Subscribe Options', 'av-subscribe' ), // page title
+		__( 'Channel Subscribe', 'av-subscribe' ), // menu title
+		'edit_theme_options', // user capability
+		AV_YT_PLUGIN_SETTING_PAGE,	// menu slug
+		'AV_YT_plugin_options_page', // menu callback function
+		100 // position
+	);
 }
 
 /**

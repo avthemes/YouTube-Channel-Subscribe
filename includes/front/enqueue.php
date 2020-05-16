@@ -1,6 +1,6 @@
 <?php
 /**
- * Enqueues scripts for the YouTube Subscribe plugin
+ * Enqueues scripts for the Subscribe plugin
  *
  * @return void
  */
@@ -19,7 +19,6 @@ function AV_YT_front_enqueue(  ) {
 		'color'				=> $options['widget_color'],
 		'bgcolor'			=> $options['widget_bg_color'],
 		'bordercolor'		=> $options['widget_border_color'],
-		'class'				=> $options['widget_add_css'],
 		'text'				=> $options['widget_text']
 	);
 

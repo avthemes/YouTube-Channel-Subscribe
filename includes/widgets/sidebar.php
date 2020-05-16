@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Configurable YouTube Channel Subscription Widget
+ * Configurable Channel Subscription Widget
  */
-class AV_YouTube_Subscribe_Widget extends WP_Widget {
+class AV_Subscribe_Channel_Widget extends WP_Widget {
 
 	/**
 	 * Outputs the content of the widget
@@ -41,7 +41,7 @@ class AV_YouTube_Subscribe_Widget extends WP_Widget {
 		$options						= get_option( 'AV_YT_options' );
 
 		$default						= array( 
-			'title' 					=> __( 'Subscribe to my channel', 'av-youtube' ),
+			'title' 					=> __( 'Subscribe to my channel', 'av-subscribe' ),
 			'channel_id' 				=> $options['channel_id'],
 			'layout'					=> $options['layout'],
 			'theme'						=> $options['theme'],
@@ -50,7 +50,6 @@ class AV_YouTube_Subscribe_Widget extends WP_Widget {
 			'color'						=> $options['widget_color'],
 			'bgcolor'					=> $options['widget_bg_color'],
 			'bordercolor'				=> $options['widget_border_color'],
-			'class'						=> $options['widget_add_css'],
 			'text'						=> $options['widget_text']
 		);
 
@@ -73,14 +72,14 @@ class AV_YouTube_Subscribe_Widget extends WP_Widget {
 		$instance									= array();
 		$instance['title']							= strip_tags( $new_instance['title'] );
 		$instance['channel_id']						= sanitize_text_field( $new_instance['channel_id'] );
-		$instance['layout']							= sanitize_text_field( $new_instance['layout'] );
-		$instance['theme']							= sanitize_text_field( $new_instance['theme'] );
-		$instance['subscribers']					= sanitize_text_field( $new_instance['subscribers'] );
+		$instance['layout']							= sanitize_text_field( ( in_array( $new_instance['layout'], array('default', 'full') ) ? $new_instance['layout'] : 'default' ) );
+		$instance['theme']							= sanitize_text_field( ( in_array( $new_instance['theme'], array('default', 'dark') ) ? $new_instance['theme'] : 'default' ) );
+		$instance['subscribers']					= sanitize_text_field( ( in_array( $new_instance['subscribers'], array('default', 'hidden') ) ? $new_instance['subscribers'] : 'default' ) );
 		$instance['text']							= sanitize_text_field( $new_instance['text'] );
-		$instance['align']							= sanitize_text_field( $new_instance['align'] );
-		$instance['color']							= ( $new_instance['color'] );
-		$instance['bgcolor']						= ( $new_instance['bgcolor'] );
-		$instance['bordercolor']					= ( $new_instance['bordercolor'] );
+		$instance['align']							= sanitize_text_field( ( in_array( $new_instance['align'], array('left', 'center', 'right' ) ) ? $new_instance['align'] : 'center' ) );
+		$instance['color']							= sanitize_hex_color( $new_instance['color'] );
+		$instance['bgcolor']						= sanitize_hex_color( $new_instance['bgcolor'] );
+		$instance['bordercolor']					= sanitize_hex_color( $new_instance['bordercolor'] );
 		$instance['class']							= sanitize_text_field( $new_instance['class'] );
 
 		return $instance;
@@ -92,9 +91,9 @@ class AV_YouTube_Subscribe_Widget extends WP_Widget {
 	public function __construct() {
 
 		$widget_ops = array( 
-			'description' => __( 'Displays YouTube channel subscribe button.', 'av-youtube' ),
+			'description' => __( 'Displays a channel subscribe button for YouTube.', 'av-subscribe' ),
 		);
 		
-		parent::__construct( 'av_youtube_subscribe_widget', __( 'AV Plugin: YouTube Channel Subscribe', 'av-youtube' ), $widget_ops );
+		parent::__construct( 'av_subscribe__channel_widget', __( 'AV Plugin: Channel Subscribe', 'av-subscribe' ), $widget_ops );
 	}
 }

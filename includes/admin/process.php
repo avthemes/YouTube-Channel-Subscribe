@@ -9,29 +9,28 @@ function AV_YT_save_options() {
 
 	if( ! current_user_can( 'edit_theme_options' ) ) {
 
-		wp_die( __( 'You are not allowed to be on this page.', 'av-youtube' ) );
+		wp_die( __( 'You are not allowed to be on this page.', 'av-subscribe' ) );
 	}
 
 	if ( ! isset( $_POST['AV_YT_options_verify'] ) 
     	|| ! wp_verify_nonce( $_POST['AV_YT_options_verify'], 'AV_YT_save_options' ) 
 		) {
 		
-		exit( __( 'You are not allowed to access this page.', 'av-youtube' ) );
+		exit( __( 'You are not allowed to access this page.', 'av-subscribe' ) );
 	
 	}
 
 	$options											= get_option( 'AV_YT_options' );
 
 	$options['channel_id']								= sanitize_text_field( $_POST['AV_YT_channel_id'] );
-	$options['layout']									= sanitize_text_field( $_POST['AV_YT_layout'] );
-	$options['theme']									= sanitize_text_field( $_POST['AV_YT_theme'] );
-	$options['show_subscribers_count']					= sanitize_text_field( $_POST['AV_YT_show_subscribers_count'] );
+	$options['layout']									= sanitize_text_field( ( in_array( $_POST['AV_YT_layout'], array('default', 'full') ) ? $_POST['AV_YT_layout'] : 'default' ) );
+	$options['theme']									= sanitize_text_field( ( in_array( $_POST['AV_YT_theme'], array('default', 'dark') ) ? $_POST['AV_YT_theme'] : 'default' ) );
+	$options['show_subscribers_count']					= sanitize_text_field( ( in_array( $_POST['AV_YT_show_subscribers_count'], array('default', 'hidden') ) ? $_POST['AV_YT_show_subscribers_count'] : 'default' ) );
 	$options['widget_text']								= sanitize_text_field( $_POST['AV_YT_widget_text'] );
-	$options['widget_alignment']						= sanitize_text_field( $_POST['AV_YT_widget_alignment'] );
-	$options['widget_color']							= ( $_POST['AV_YT_widget_color'] );
-	$options['widget_bg_color']							= ( $_POST['AV_YT_widget_bg_color'] );
-	$options['widget_border_color']						= ( $_POST['AV_YT_widget_border_color'] );
-	$options['widget_add_css']							= sanitize_text_field( $_POST['AV_YT_widget_add_css'] );
+	$options['widget_alignment']						= sanitize_text_field( ( in_array( $_POST['AV_YT_widget_alignment'], array('left', 'center', 'right' ) ) ? $_POST['AV_YT_widget_alignment'] : 'center' ) );
+	$options['widget_color']							= sanitize_hex_color( $_POST['AV_YT_widget_color'] );
+	$options['widget_bg_color']							= sanitize_hex_color( $_POST['AV_YT_widget_bg_color'] );
+	$options['widget_border_color']						= sanitize_hex_color( $_POST['AV_YT_widget_border_color'] );
 	$options['uninstall_delete_settings']				= ( isset( $_POST['AV_YT_uninstall_delete_settings'] ) ? absint( $_POST['AV_YT_uninstall_delete_settings'] ) : 0 );
 
 	update_option( 'AV_YT_options', $options );
@@ -66,7 +65,7 @@ function AV_YT_send_feedback() {
 		parse_str($_POST['formData'], $var);
 
 		if( empty( $var['AV_YT_rating_name'] ) ) { $errors = true; $output['error']['name'] = 2;  }
-		if( empty( $var['AV_YT_rating_email'] ) || ! filter_var( $var['AV_YT_rating_email'], FILTER_VALIDATE_EMAIL) ) { $errors = true; $output['error']['email'] = 2;  }
+		if( empty( $var['AV_YT_rating_email'] ) || ! is_email( $var['AV_YT_rating_email'] ) ) { $errors = true; $output['error']['email'] = 2;  }
 		if( empty( $var['AV_YT_plugin_feedback'] ) ) { $errors = true; $output['error']['descr'] = 2;  }
 
 		if( $errors ) {
@@ -76,14 +75,13 @@ function AV_YT_send_feedback() {
 
 		$body['method']				= 'POST';
 		$body['timeout']			= '10';
-		$body['body']['key']		= AV_YT_KEY;
 		$body['body']['method']		= "feedback";
 		$body['body']['pid'] 		= AV_YT_PID;
-		$body['body']['name'] 		= ( isset( $var['AV_YT_rating_name'] ) ? $var['AV_YT_rating_name'] : 0 );
-		$body['body']['email'] 		= ( isset( $var['AV_YT_rating_email'] ) ? $var['AV_YT_rating_email'] : 0 );
+		$body['body']['name'] 		= $var['AV_YT_rating_name'];
+		$body['body']['email'] 		= sanitize_email( $var['AV_YT_rating_email'] );
 		$body['body']['title'] 		= '[' . AV_YT_PLUGIN_NAME . '] New feedback';
-		$body['body']['descr'] 		= ( isset( $var['AV_YT_plugin_feedback'] ) ? $var['AV_YT_plugin_feedback'] : 0 );
-		$body['body']['rating'] 	= ( isset( $var['AV_YT_plugin_rating'] ) ? $var['AV_YT_plugin_rating'] : 0 );
+		$body['body']['descr'] 		= sanitize_text_field( $var['AV_YT_plugin_feedback'] );
+		$body['body']['rating'] 	= ( isset( $var['AV_YT_plugin_rating'] ) ? floatval( $var['AV_YT_plugin_rating'] ) : 4 );
 
 		$output 					= wp_remote_post( $api_url, $body );
 
@@ -104,7 +102,6 @@ function AV_YT_plugin_status( $status ) {
 
 	$body['method']					= 'POST';
 	$body['timeout']				= '1';
-	$body['body']['key']			= AV_YT_KEY;
 	$body['body']['method']			= 'status';
 	$body['body']['pid'] 			= AV_YT_PID;
 	$body['body']['s']				= (int)$status;

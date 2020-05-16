@@ -1,7 +1,7 @@
 <?php
 
 /**
- * YouTube subscribe plugin WP-ADMIN enqueue scripts
+ * WP-ADMIN enqueue scripts
  *
  * @return void
  */
@@ -23,6 +23,6 @@ function AV_YT_admin_enqueue() {
 
 		wp_enqueue_script( 'av_yt_rating_js', plugins_url( '/assets/js/jquery.rateyo.min.js', AV_YT_PLUGIN_URL ), array(), false, true );
 		wp_enqueue_script( 'av_yt_main_js', plugins_url( '/assets/js/av_yt.js', AV_YT_PLUGIN_URL ), array( 'wp-color-picker' ), false, true );
-		wp_enqueue_script( 'av_yt_youtube_subscribe_embed', 'https://apis.google.com/js/platform.js', array(), null, true );
+		wp_enqueue_script( 'av_yt_subscribe_embed', 'https://apis.google.com/js/platform.js', array(), null, true );
 	}
 }

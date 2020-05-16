@@ -2,8 +2,8 @@
 
 	<?php if( ( $active_count = count( $av_plugins ) ) > 0 ) { ?>
 	<div class="av-title-logo">
-		<div class="av-fs-180"><?php _e( 'Active plugins', 'av-youtube' );?></div>
-		<p><?php _e( 'List of active AV Plugins on your site. Click on the plugin to go to the settings page.', 'av-youtube' );?></p>
+		<div class="av-fs-180"><?php _e( 'Active plugins', 'av-subscribe' );?></div>
+		<p><?php _e( 'List of active AV Plugins on your site. Click on the plugin to go to the settings page.', 'av-subscribe' );?></p>
 	</div>
 
 	<div class="av-row av-clearfix">

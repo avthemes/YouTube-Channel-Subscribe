@@ -1,4 +1,4 @@
-=== YT Channel Subscribe ===
+=== Channel Subscribe - YouTube ===
 Contributors: avthemes1
 Donate link: https://avthemes.com
 Tags: youtube subscribe, video marketing, youtube, youtube channel
@@ -14,7 +14,7 @@ Increase your channel subscriptions by adding a YouTube Channel Subscribe button
 
 Make it easy for your visitors to subscribe to your YouTube channel with this easy to use plugin.
 
-The YouTube Subscribe Plugin by [AV Themes](https://avthemes.com, "WordPress Themes & Plugins") automatically adds a "YouTube channel subscribe" button below every YouTube video you embed on your site pages and posts.
+The Channel Subscribe for YouTube Plugin by [AV Themes](https://avthemes.com, "WordPress Themes & Plugins") automatically adds a "YouTube channel subscribe" button below every YouTube video you embed on your site pages and posts.
 
 The channel subscribe plugin also works with all YouTube videos even those from third party channels. This feature allows you to add the most relevant content for your visitors while enabling them to find and subscribe to your channel.
 
@@ -26,14 +26,13 @@ Here's an overview of the feature of this plugin:
 * Show or hide the subscribers count for your channel
 * Easily change the "Subscribe" text on the settings page
 * Change the background, border and font color
-* Add additional CSS classes for additional styling
 * Use the shortcode to add the Subscribe bar anywhere in your content
 * This plugin also has a nifty widget to add the Subscribe button in your footer or sidebar etc..
 * Override your default settings by changing the attributes for the shortcode and widget
 * Option to delete or keep the plugin settings after removing the plugin
 * Translation ready
 
-Plugin Demo on YouTube:
+Plugin Demo:
 
 [youtube http://www.youtube.com/watch?v=eGywhinDNKg]
 
@@ -76,9 +75,9 @@ Please use [the issue tracker on the GitHub repo](https://github.com/avthemes/Yo
 
 = How do I install the plugin? =
 
-1. Install YouTube Channel Subscribe by uploading the av-youtube-subscribe directory to the /wp-content/plugins/ directory.
+1. Install Channel Subscribe for YouTube by uploading the av-channel-subscribe directory to the /wp-content/plugins/ directory.
 2. Activate the plugin.
-3. Configure the plugin and add your YouTube channel details by clicking on the "YT Subscribe" admin menu item.
+3. Configure the plugin and add your YouTube channel details by clicking on the "Channel Subscribe" admin menu item.
 
 = Do you accept donations? =
 

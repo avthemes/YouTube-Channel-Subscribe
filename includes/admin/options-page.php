@@ -13,7 +13,7 @@ function AV_Plugins_plugin_options_page() {
 }
 
 /**
- * YouTube Subscribe options page.
+ * Subscribe options page.
  *
  * @return void
  */

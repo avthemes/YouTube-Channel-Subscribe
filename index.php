@@ -1,23 +1,23 @@
 <?php
 /**
- * YouTube Channel Subscribe Plugin for WordPress
+ * Channel Subscribe - YouTube
  *
- * @package   av-youtube-subscribe
- * @link      https://avthemes.com/youtube-subscribe-plugin
+ * @package   av-channel-subscribe
+ * @link      https://avthemes.com/subscribe-plugin-youtube
  * @author    AV Themes <https://avthemes.com>
  * @copyright 2020 AV Themes
  * @license   GPL v2 or later
  *
  * 
- * Plugin Name: YT Channel Subscribe
- * Plugin URI: https://avthemes.com/youtube-subscribe-plugin
+ * Plugin Name: Channel Subscribe - YouTube
+ * Plugin URI: https://avthemes.com/subscribe-plugin-youtube
  * Description: Add a YouTube subscribe widget to your sidebar, to any page using shortcodes and automatically add the YouTube Subscribe button under every YouTube Video on your pages and posts.
  * Version: 1.0
  * Author: AV Themes
  * Author URI: https://avthemes.com
  * License: GPLv2
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain: av-youtube
+ * Text Domain: av-subscribe
  * Domain Path: /plugin/languages
  * 
  * This program is free software; you can redistribute it and/or modify
@@ -32,7 +32,7 @@
 */
 
 // Security check if plugin is being loaded via WP or not
-if ( !function_exists( 'add_action') ) exit( __( 'Going fishing are we? Sorry no fishes here!', 'av-youtube' ) );
+if ( !function_exists( 'add_action') ) exit( __( 'Going fishing are we? Sorry no fishes here!', 'av-subscribe' ) );
 
 // Environment Setup
 define( 'AV_YT_DEV_MODE', 1 );
@@ -40,8 +40,7 @@ define( 'AV_YT_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'AV_YT_PLUGIN_URL', __FILE__ );
 define( 'AV_YT_PLUGIN_SETTING_PAGE', 'AV_YT_plugin_options' );
 define( 'AV_YT_PID', 100 );
-define( 'AV_YT_PLUGIN_NAME', 'YouTube Channel Subscribe' );
-define( 'AV_YT_KEY', 'af09f7712211a3427423c3547567a018' );
+define( 'AV_YT_PLUGIN_NAME', 'Channel Subscribe - YouTube' );
 
 // Plugin File Includes
 include( AV_YT_PLUGIN_PATH . 'includes/activate.php' );
@@ -74,4 +73,4 @@ add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'AV_YT_plugin_set
 
 
 // Plugin Shortcodes
-add_shortcode( 'AV_YouTube_Subscribe', 'AV_YT_subscribe_shortcode' );
+add_shortcode( 'AV_Channel_Subscribe', 'AV_YT_subscribe_shortcode' );

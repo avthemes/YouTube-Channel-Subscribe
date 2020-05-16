@@ -7,5 +7,5 @@
  */
 function AV_YT_widgets_init(  ) {
 
-	register_widget( 'AV_YouTube_Subscribe_Widget' );
+	register_widget( 'AV_Subscribe_Channel_Widget' );
 }
