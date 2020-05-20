@@ -75,7 +75,7 @@ Please use [the issue tracker on the GitHub repo](https://github.com/avthemes/Yo
 
 = How do I install the plugin? =
 
-1. Install Channel Subscribe for YouTube by uploading the av-channel-subscribe directory to the /wp-content/plugins/ directory.
+1. Install Channel Subscribe for YouTube by uploading the yt-channel-subscribe directory to the /wp-content/plugins/ directory.
 2. Activate the plugin.
 3. Configure the plugin and add your YouTube channel details by clicking on the "Channel Subscribe" admin menu item.
 
