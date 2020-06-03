@@ -4,7 +4,7 @@ Donate link: https://avthemes.com
 Tags: youtube subscribe, video marketing, youtube, youtube channel
 Requires at least: 3.7
 Tested up to: 5.4
-Stable tag: 3.5.2
+Stable tag: 1.0.1
 License: GPLv2 or later
 Requires PHP: 5.4
 

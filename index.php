@@ -12,7 +12,7 @@
  * Plugin Name: Channel Subscribe - YouTube
  * Plugin URI: https://avthemes.com/subscribe-plugin-youtube
  * Description: Add a YouTube subscribe widget to your sidebar, to any page using shortcodes and automatically add the YouTube Subscribe button under every YouTube Video on your pages and posts.
- * Version: 1.0
+ * Version: 1.0.1
  * Author: AV Themes
  * Author URI: https://avthemes.com
  * License: GPLv2
